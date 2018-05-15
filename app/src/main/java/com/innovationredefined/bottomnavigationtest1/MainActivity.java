@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    BottomNavigationView navigation;
 
     private TextView mTextMessage;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            BottomNavigationViewHelper.removeBottomNavigationLabel(navigation);
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_home);
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mTextMessage = findViewById(R.id.message);
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation = findViewById(R.id.navigation);
         BottomNavigationViewHelper.disableShiftMode(navigation);
         BottomNavigationViewHelper.removeBottomNavigationLabel(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

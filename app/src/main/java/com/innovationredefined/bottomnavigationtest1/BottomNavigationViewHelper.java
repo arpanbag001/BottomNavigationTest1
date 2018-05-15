@@ -41,14 +41,8 @@ public class BottomNavigationViewHelper {
     public static void  removeBottomNavigationLabel(BottomNavigationView view){
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
         try {
-            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
-            shiftingMode.setAccessible(true);
-            shiftingMode.setBoolean(menuView, false);
-            shiftingMode.setAccessible(false);
             for (int i = 0; i < menuView.getChildCount(); i++) {
                 BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
-                //noinspection RestrictedApi
-
                 Field mLargeLabel = item.getClass().getDeclaredField("mLargeLabel");
                 Field mSmallLabel = item.getClass().getDeclaredField("mSmallLabel");
                 mLargeLabel.setAccessible(true);
@@ -70,9 +64,9 @@ public class BottomNavigationViewHelper {
 
             }
         } catch (NoSuchFieldException e) {
-            Log.e("BNVHelper", "Unable to get shift mode field", e);
+            Log.e("BNVHelper", "Unable to get tv field", e);
         } catch (IllegalAccessException e) {
-            Log.e("BNVHelper", "Unable to change value of shift mode", e);
+            Log.e("BNVHelper", "Unable to change value of tv", e);
         }
     }
 }
