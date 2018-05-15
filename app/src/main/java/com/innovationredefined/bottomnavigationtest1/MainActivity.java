@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         BottomNavigationViewHelper.disableShiftMode(navigation);
+        BottomNavigationViewHelper.removeBottomNavigationLabel(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
